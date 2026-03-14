@@ -5,8 +5,13 @@ const copyMessage = document.getElementById("copyMessage");
 
 let currentColors = [];
 
-generateBtn.addEventListener("click", generatePalette);
-copyAllBtn.addEventListener("click", copyAllColors);
+if (generateBtn) {
+    generateBtn.addEventListener("click", generatePalette);
+}
+
+if (copyAllBtn) {
+    copyAllBtn.addEventListener("click", copyAllColors);
+}
 
 function getRandomColor() {
     const letters = "0123456789ABCDEF";
@@ -63,5 +68,25 @@ function updateCopyButtonGradient() {
     const gradient = "linear-gradient(90deg, " + currentColors.join(", ") + ")";
     copyAllBtn.style.background = gradient;
 }
+
+const navButtons = document.querySelectorAll(".nav-btn");
+const sections = document.querySelectorAll(".page-section");
+
+navButtons.forEach(button => {
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        const targetId = this.getAttribute("data-target");
+
+        sections.forEach(section => {
+            section.classList.remove("active-section");
+        });
+
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.classList.add("active-section");
+        }
+    });
+});
 
 generatePalette();
