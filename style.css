@@ -215,12 +215,14 @@ body {
 
 .back-home {
   margin-top: 8px;
-  color: #00eaff;
+  color: white;
   text-decoration: none;
   opacity: 0.9;
+  transition: 0.3s;
 }
 
 .back-home:hover {
+  color: #00eaff;
   opacity: 1;
   text-shadow: 0 0 10px rgba(0, 234, 255, 0.45);
 }
@@ -302,7 +304,12 @@ body {
   color: white;
   font-weight: bold;
   border: none;
-  box-shadow: 0 0 15px rgba(0,234,255,0.4);
+  transition: 0.3s;
+}
+
+#copyAllBtn:hover {
+  transform: scale(1.07);
+  box-shadow: var(--glow);
 }
 
 .page-section {

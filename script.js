@@ -65,8 +65,13 @@ function copyAllColors() {
 }
 
 function updateCopyButtonGradient() {
+
     const gradient = "linear-gradient(90deg, " + currentColors.join(", ") + ")";
     copyAllBtn.style.background = gradient;
+
+    const glow = currentColors.map(color => `0 0 15px ${color}`).join(",");
+
+    copyAllBtn.style.setProperty("--glow", glow);
 }
 
 const navButtons = document.querySelectorAll(".nav-btn");
