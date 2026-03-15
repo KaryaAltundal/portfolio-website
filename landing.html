@@ -1,120 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Landing Page Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Demo</title>
 
-<style>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-body{
-margin:0;
-font-family:Arial;
-background:#0a0a0a;
-color:white;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0a0a0a;
+      color: white;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 40px;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #00eaff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #00eaff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at top, #111 0%, #000 70%);
+    }
+
+    .hero-content {
+      max-width: 1100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 62px;
+      line-height: 1.1;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #00eaff, #0077ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0, 234, 255, 0.35);
+    }
+
+    .hero-text p {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #c8d6ff;
+      max-width: 560px;
+      margin-bottom: 24px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 28px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #00eaff, #0077ff);
+      color: white;
+      box-shadow: 0 0 15px rgba(0, 234, 255, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(0, 234, 255, 0.8);
+    }
+
+   .btn-secondary{
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  transition: 0.3s;
 }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-background: radial-gradient(circle at top,#111 0%,#000 70%);
+.btn-secondary:hover{
+  color: #00eaff;
+  border: 1px solid #00eaff;
+  box-shadow: 0 0 15px rgba(0,234,255,0.7);
+  transform: scale(1.05);
 }
 
-.hero h1{
-font-size:60px;
-background:linear-gradient(90deg,#00eaff,#0077ff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
+    .hero-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 234, 255, 0.15);
+      border-radius: 24px;
+      padding: 22px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0, 234, 255, 0.08);
+    }
 
-.hero p{
-opacity:0.8;
-font-size:20px;
-max-width:500px;
-}
+    .mockup-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
 
-.btn{
-margin-top:20px;
-padding:14px 32px;
-border-radius:30px;
-background:linear-gradient(90deg,#00eaff,#0077ff);
-color:white;
-border:none;
-cursor:pointer;
-font-size:16px;
-}
+    .mockup-dots {
+      display: flex;
+      gap: 8px;
+    }
 
-.features{
-padding:80px 20px;
-display:flex;
-justify-content:center;
-gap:40px;
-flex-wrap:wrap;
-background:#000814;
-}
+    .mockup-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+    }
 
-.feature{
-width:260px;
-background:rgba(255,255,255,0.04);
-border:1px solid rgba(0,234,255,0.15);
-border-radius:16px;
-padding:24px;
-text-align:center;
-}
+    .mockup-label {
+      color: #b0c4ff;
+      font-size: 14px;
+    }
 
-.feature h3{
-color:#00eaff;
-}
+    .mockup-screen {
+      background: linear-gradient(135deg, rgba(0, 234, 255, 0.18), rgba(123, 44, 255, 0.18));
+      border-radius: 18px;
+      padding: 20px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-.footer{
-text-align:center;
-padding:40px;
-opacity:0.6;
-}
+    .mockup-badge {
+      width: fit-content;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+    }
 
-</style>
+    .mockup-screen h3 {
+      font-size: 28px;
+      margin: 20px 0 10px;
+    }
 
+    .mockup-screen p {
+      color: #d9e4ff;
+      line-height: 1.5;
+    }
+
+    .mockup-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 4px;
+      color: #00eaff;
+    }
+
+    .section {
+      padding: 90px 20px;
+      background: #000814;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #b0c4ff;
+      max-width: 700px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 234, 255, 0.15);
+      border-radius: 18px;
+      padding: 24px;
+      transition: 0.3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 24px rgba(0, 234, 255, 0.18);
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    .feature h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: #c8d6ff;
+      line-height: 1.6;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .preview-text h3 {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .preview-text p {
+      color: #c8d6ff;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+
+    .preview-panel {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 234, 255, 0.15);
+      border-radius: 22px;
+      padding: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    .preview-box {
+      background: linear-gradient(135deg, rgba(0, 119, 255, 0.18), rgba(0, 234, 255, 0.12));
+      border-radius: 16px;
+      min-height: 280px;
+      padding: 20px;
+    }
+
+    .preview-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      color: #dce7ff;
+      font-size: 14px;
+    }
+
+    .preview-card {
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .preview-card h4 {
+      margin: 0 0 8px;
+    }
+
+    .preview-card p {
+      margin: 0;
+      color: #edf4ff;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta-box {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 234, 255, 0.16);
+      border-radius: 24px;
+      padding: 40px 24px;
+      box-shadow: 0 0 26px rgba(0, 234, 255, 0.08);
+    }
+
+    .cta-box h2 {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      color: #c8d6ff;
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto 22px;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 30px 20px 40px;
+      background: #000814;
+      color: #91a9df;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-content,
+      .preview-grid,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 120px;
+      }
+
+      .hero-text h1 {
+        font-size: 42px;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+      }
+
+      .navbar {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        gap: 12px;
+        font-size: 14px;
+      }
+
+      .mockup-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <nav class="navbar">
+    <div class="logo">Karya</div>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#preview">Preview</a>
+      <a href="#cta">Start</a>
+    </div>
+  </nav>
 
-<section class="hero">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Design clean, modern digital experiences.</h1>
+        <p>
+          A simple landing page concept focused on modern visuals, responsive layout,
+          and clear call-to-action design. Built as a front-end practice project.
+        </p>
 
-<h1>Modern UI Design</h1>
+        <div class="hero-buttons">
+          <a href="#features" class="btn btn-primary">Explore Features</a>
+          <a href="#preview" class="btn btn-secondary">See Preview</a>
+        </div>
+      </div>
 
-<p>
-Simple landing page built as a front-end practice project.
-</p>
+      <div class="hero-card">
+        <div class="mockup-top">
+          <div class="mockup-dots">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="mockup-label">Landing Page Demo</div>
+        </div>
 
-<button class="btn">Get Started</button>
+        <div class="mockup-screen">
+          <div class="mockup-badge">UI Concept</div>
 
-</section>
+          <div>
+            <h3>Launch your next idea with a modern interface.</h3>
+            <p>
+              A stylish layout combining gradient visuals, glassmorphism cards,
+              and a simple responsive structure.
+            </p>
+          </div>
 
-<section class="features">
+          <div class="mockup-stats">
+            <div class="stat-box">
+              <strong>100%</strong>
+              <span>Responsive</span>
+            </div>
+            <div class="stat-box">
+              <strong>3</strong>
+              <span>Core Sections</span>
+            </div>
+            <div class="stat-box">
+              <strong>Pure</strong>
+              <span>HTML & CSS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="feature">
-<h3>Responsive</h3>
-<p>Designed to work on all screen sizes.</p>
-</div>
+  <section id="features" class="section">
+    <div class="section-inner">
+      <h2 class="section-title">Features</h2>
+      <p class="section-subtitle">
+        This landing page focuses on layout structure, visual hierarchy,
+        spacing, responsiveness, and modern interface styling.
+      </p>
 
-<div class="feature">
-<h3>Modern UI</h3>
-<p>Clean interface with gradient and glow effects.</p>
-</div>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-icon">✨</div>
+          <h3>Modern UI</h3>
+          <p>Uses glow effects, gradients, glass-like panels, and clear typography.</p>
+        </div>
 
-<div class="feature">
-<h3>Fast</h3>
-<p>Lightweight page built with pure HTML & CSS.</p>
-</div>
+        <div class="feature">
+          <div class="feature-icon">📱</div>
+          <h3>Responsive Layout</h3>
+          <p>Adapts to smaller screens with a cleaner single-column structure.</p>
+        </div>
 
-</section>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h3>Simple Structure</h3>
+          <p>Built with pure HTML and CSS, making it lightweight and easy to understand.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="footer">
-Landing Page Practice – Karya Altundal
-</div>
+  <section id="preview" class="section">
+    <div class="section-inner preview-grid">
+      <div class="preview-text">
+        <h3>Clean interface with clear visual hierarchy.</h3>
+        <p>
+          The layout separates the headline, supporting text, and action buttons
+          so the user can immediately understand the main purpose of the page.
+        </p>
+        <p>
+          Supporting cards and content blocks are designed to create balance and
+          make the page feel more polished and product-focused.
+        </p>
+      </div>
 
+      <div class="preview-panel">
+        <div class="preview-box">
+          <div class="preview-nav">
+            <span>Dashboard Preview</span>
+            <span>New UI</span>
+          </div>
+
+          <div class="preview-card">
+            <h4>Smart Content Blocks</h4>
+            <p>Organized sections make the page easier to scan and understand.</p>
+          </div>
+
+          <div class="preview-card">
+            <h4>Modern Look</h4>
+            <p>Subtle shadows and gradients add depth without making the design too heavy.</p>
+          </div>
+
+          <div class="preview-card">
+            <h4>Simple Experience</h4>
+            <p>Focused messaging and call-to-action buttons guide the visitor clearly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="section cta">
+    <div class="section-inner">
+      <div class="cta-box">
+        <h2>Ready to build something modern?</h2>
+        <p>
+          This project is a practice landing page concept created to improve front-end
+          layout skills and explore clean, modern interface design.
+        </p>
+        <a href="index.html" class="btn btn-primary">Back to Portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    Landing Page Practice • Karya Altundal
+  </div>
 </body>
 </html>
