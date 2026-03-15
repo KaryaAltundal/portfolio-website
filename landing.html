@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Landing Page Demo</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0a0a0a;
+color:white;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background: radial-gradient(circle at top,#111 0%,#000 70%);
+}
+
+.hero h1{
+font-size:60px;
+background:linear-gradient(90deg,#00eaff,#0077ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+opacity:0.8;
+font-size:20px;
+max-width:500px;
+}
+
+.btn{
+margin-top:20px;
+padding:14px 32px;
+border-radius:30px;
+background:linear-gradient(90deg,#00eaff,#0077ff);
+color:white;
+border:none;
+cursor:pointer;
+font-size:16px;
+}
+
+.features{
+padding:80px 20px;
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+background:#000814;
+}
+
+.feature{
+width:260px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(0,234,255,0.15);
+border-radius:16px;
+padding:24px;
+text-align:center;
+}
+
+.feature h3{
+color:#00eaff;
+}
+
+.footer{
+text-align:center;
+padding:40px;
+opacity:0.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+<h1>Modern UI Design</h1>
+
+<p>
+Simple landing page built as a front-end practice project.
+</p>
+
+<button class="btn">Get Started</button>
+
+</section>
+
+<section class="features">
+
+<div class="feature">
+<h3>Responsive</h3>
+<p>Designed to work on all screen sizes.</p>
+</div>
+
+<div class="feature">
+<h3>Modern UI</h3>
+<p>Clean interface with gradient and glow effects.</p>
+</div>
+
+<div class="feature">
+<h3>Fast</h3>
+<p>Lightweight page built with pure HTML & CSS.</p>
+</div>
+
+</section>
+
+<div class="footer">
+Landing Page Practice – Karya Altundal
+</div>
+
+</body>
+</html>
